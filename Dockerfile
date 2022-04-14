@@ -43,4 +43,5 @@ RUN rm ffmpeg.zip
 RUN mv ffmpeg /usr/local/bin/
 RUN chmod +x /usr/local/bin/ffmpeg
 
+WORKDIR $WORK_DIR/backend
 ENTRYPOINT ["/bin/bash","bootstrap"]
