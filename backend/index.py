@@ -200,7 +200,7 @@ def download_file(filepath):
     groups=auth_key.split("-")
     assert len(groups)==4
     ts_expired, rand, sign=groups[0], groups[1], groups[3]
-    assert int(ts_expired)<=int(time.time())
+    assert int(ts_expired)>=int(time.time())
     uri="/files/{}".format(filepath.strip("/"))
     hash = hashlib.md5("{}-{}-{}-0-{}".format(uri, ts_expired,rand, KEY_SECRET).encode('utf-8')).hexdigest()
     assert sign==hash
