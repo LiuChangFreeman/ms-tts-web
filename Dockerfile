@@ -24,7 +24,7 @@ RUN chmod +x bootstrap
 
 # Build fronted
 COPY frontend $WORK_DIR/frontend
-WORKDIR $WORK_DIR/fronted
+WORKDIR $WORK_DIR/frontend
 RUN mkdir /usr/local/lib/nodejs
 RUN wget https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz
 RUN tar -xJvf node-$NODE_VERSION-linux-x64.tar.xz -C /usr/local/lib/nodejs
