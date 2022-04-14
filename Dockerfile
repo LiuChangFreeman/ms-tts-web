@@ -10,6 +10,7 @@ VOLUME [$STORAGE_PATH]
 EXPOSE 9000/tcp
 
 RUN mkdir -p $LIB_PATH $WORK_DIR $WORK_DIR/fronted $WORK_DIR/backend
+ADD container/resolv.conf /etc/resolv.conf
 ADD container/sources.list /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y wget unzip xz-utils
