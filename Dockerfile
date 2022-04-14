@@ -1,4 +1,5 @@
 FROM python:3.7.4-slim-stretch
+ENV PORT=7031
 ENV GITHUB_HTTP_PORXY=https://ghproxy.com
 ENV WORK_DIR=/home/tts
 ENV LIB_PATH=/home/tts/lib
@@ -9,7 +10,7 @@ ENV PATH=/usr/local/lib/nodejs/node-$NODE_VERSION-linux-x64/bin:$PATH
 VOLUME [$STORAGE_PATH]
 EXPOSE 9000/tcp
 
-RUN mkdir -p $LIB_PATH $WORK_DIR
+RUN mkdir -p $LIB_PATH
 ADD container/sources.list /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y wget unzip xz-utils
@@ -21,9 +22,9 @@ RUN pip install -r requirements.txt -t $LIB_PATH -i https://mirrors.aliyun.com/p
 RUN chmod +x bootstrap
 
 # Build fronted
-COPY frontend $WORK_DIR
+COPY frontend $WORK_DIR/fronted
 WORKDIR $WORK_DIR/fronted
-RUN mkdir mkdir /usr/local/lib/nodejs
+RUN mkdir /usr/local/lib/nodejs
 RUN wget https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz
 RUN tar -xJvf node-$NODE_VERSION-linux-x64.tar.xz -C /usr/local/lib/nodejs
 RUN rm node-$NODE_VERSION-linux-x64.tar.xz
