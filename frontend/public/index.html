@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="apple-mobile-web-app-title" content="晓晓配音">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" href="./icon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./icon.png">
+    <link rel="apple-touch-startup-image" href="./icon.png">
+    <title>晓晓配音</title>
+  </head>
+  <body style="background: white">
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js', {
+          scope: '/',
+        }).then(function (registration) {
+          navigator.serviceWorker.addEventListener('message', event => {
+            const msg = event.data.msg;
+            if (msg === 'OFFLINE') {
+              weui.topTips('请求异常', {
+                duration: 1500,
+              });
+            }
+          });
+        }).catch(function (err) {
+        });
+      }
+    </script>
+  </body>
+</html>

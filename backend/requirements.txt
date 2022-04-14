@@ -1,0 +1,10 @@
+gunicorn==20.0.0
+Flask==1.1.4
+jinja2==2.10.1
+markupsafe==1.1.1
+Flask_Limiter==1.0.1
+requests==2.22.0
+Flask_Session==0.3.1
+aiohttp==3.8.1
+aiofiles==0.8.0
+pillow==9.1.0

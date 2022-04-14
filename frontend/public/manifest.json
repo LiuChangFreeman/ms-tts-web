@@ -1,0 +1,14 @@
+{
+  "name": "ycy素材站",
+  "short_name": "ycy素材站",
+  "display": "standalone",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

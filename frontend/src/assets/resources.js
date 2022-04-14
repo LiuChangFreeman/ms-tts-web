@@ -1,0 +1,17 @@
+export const ttsStyles=[
+  {id:"Default",label:"默认",desc:"默认值"},
+  {id:"assistant",label:"助理",desc:"以热情而轻松的数字助理语气讲话"},
+  {id:"chat",label:"聊天",desc:"以轻松、随意的语气闲聊"},
+  {id:"customerservice",label:"客服",desc:"以友好热情的语气为客户提供支持"},
+  {id:"newscast",label:"新闻",desc:"以正式专业的语气叙述新闻"},
+  {id:"affectionate",label:"撒娇",desc:"以较高的音调和音量表达温暖而亲切的语气"},
+  {id:"angry",label:"恼怒",desc:"以较低的音调、较高的强度和较高的音量来表达恼怒的语气"},
+  {id:"calm",label:"冷静",desc:"以沉着冷静的态度说话。语气、音调、韵律与其他语音类型相比要统一得多"},
+  {id:"cheerful",label:"开心",desc:"以较高的音调和音量表达欢快、热情的语气"},
+  {id:"disgruntled",label:"抱怨",desc:"表达轻蔑和抱怨的语气。这种情绪的语音表现出不悦和蔑视"},
+  {id:"fearful",label:"不安",desc:"以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气"},
+  {id:"gentle",label:"温柔",desc:"以较低的音调和音量表达温和、礼貌和愉快的语气"},
+  {id:"lyrical",label:"抒情",desc:"以优美又带感伤的方式表达情感"},
+  {id:"sad",label:"悲伤",desc:"以较高的音调、较低的强度和较低的音量表达悲伤的语气"},
+  {id:"serious",label:"严肃",desc:"表达严肃和命令的语气，说话者的声音通常比较僵硬，节奏也不那么轻松"},
+]

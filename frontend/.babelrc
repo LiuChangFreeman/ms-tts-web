@@ -1,0 +1,35 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",{
+      "targets": {
+        "ie": "11"
+      }
+    }],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-class-properties",
+    "@babel/plugin-transform-runtime",
+    ["@babel/plugin-proposal-decorators", {"legacy": true}],
+    ["@babel/plugin-proposal-class-properties", { "loose": false }],
+    "transform-class-properties",
+    [
+      "import",
+      {
+        "libraryName":"antd",
+        "libraryDirectory":"es",
+        "style":"css"
+      },
+      "antd"
+    ],
+    [
+      "import",
+      {
+        "libraryName":"antd-mobile",
+        "style":"css"
+      },
+      "antd-mobile"
+    ]
+  ]
+}

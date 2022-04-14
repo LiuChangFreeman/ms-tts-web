@@ -1,0 +1,5 @@
+#!/bin/bash
+export PATH=$PATH:$(pwd)/bin:$LIB_PATH/bin
+export PYTHONPATH=$PYTHONPATH:$(pwd):$LIB_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd):$LIB_PATH
+gunicorn -w1 -b0.0.0.0:9000 index:app --chdir $(pwd)
