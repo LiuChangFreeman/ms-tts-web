@@ -1,4 +1,5 @@
 FROM python:3.7.4-slim-stretch
+ENV HOST=0.0.0.0
 ENV PORT=7031
 ENV GITHUB_HTTP_PORXY=https://ghproxy.com
 ENV WORK_DIR=/home/tts
