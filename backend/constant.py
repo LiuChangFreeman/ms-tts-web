@@ -6,9 +6,9 @@ import uuid
 import asyncio
 import hashlib
 
-PATH_PREFIX = os.environ.get("PATH_PREFIX", "tts")
-PATH_LIB = os.environ.get("LIB_PATH")
-PATH_STORAGE = os.environ.get("STORAGE_PATH")
+PATH_LIB = os.environ.get("LIB_PATH","/home/tts/lib")
+PATH_STORAGE = os.environ.get("STORAGE_PATH","/home/storage")
+PATH_FRONTEND_ASSERTS="../frontend/dist"
 
 EXPIRE_SECONDS = 60*15
 DEFAULT_LIMIT = "1 per 3 second"
@@ -18,3 +18,6 @@ tts_styles = ["Default", "assistant", "chat", "customerservice", "newscast", "af
 
 MIN_VIDEO_HEIGHT = 720
 VIDEO_WIDTH = 1280
+FONT_SIZE = 60
+FONT_WIDTH = FONT_SIZE + 8
+LINE_PADDING = FONT_WIDTH*3
