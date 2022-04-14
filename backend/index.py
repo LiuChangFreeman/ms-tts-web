@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key=KEY_SECRET 
 app.debug=True
 api_main = Blueprint('main', __name__)
-api_static = Blueprint('static', __name__,template_folder=PATH_FRONTEND_ASSERTS,static_folder=PATH_FRONTEND_ASSERTS)
+api_static = Blueprint('static', __name__)
 
 limiter = Limiter(
     app,
@@ -185,7 +185,7 @@ def generate():
 @api_static.route('/')
 @limiter.exempt
 def index():
-    return render_template('index.html')
+    return send_from_directory(PATH_FRONTEND_ASSERTS,"index.html")
 
 @api_static.route('/<path:filename>')
 @limiter.exempt
@@ -200,7 +200,7 @@ def download_file(filepath):
     groups=auth_key.split("-")
     assert len(groups)==4
     ts_expired, rand, sign=groups[0], groups[1], groups[3]
-    assert ts_expired<=int(time.time())
+    assert int(ts_expired)<=int(time.time())
     uri="/files/{}".format(filepath.strip("/"))
     hash = hashlib.md5("{}-{}-{}-0-{}".format(uri, ts_expired,rand, KEY_SECRET).encode('utf-8')).hexdigest()
     assert sign==hash
@@ -214,5 +214,5 @@ app.register_blueprint(api_static)
 
 if __name__ == "__main__":
     host=os.environ.get("HOST","0.0.0.0")
-    port=int(os.environ.get("PORT",7031))
+    port=int(os.environ.get("PORT","7031"))
     app.run(host=host, port=port)

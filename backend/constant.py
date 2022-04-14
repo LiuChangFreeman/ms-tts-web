@@ -8,7 +8,8 @@ import hashlib
 
 PATH_LIB = os.environ.get("LIB_PATH","/home/tts/lib")
 PATH_STORAGE = os.environ.get("STORAGE_PATH","/home/storage")
-PATH_FRONTEND_ASSERTS="../frontend/dist"
+WORK_DIR = os.path.split(os.path.realpath(__file__))[0]
+PATH_FRONTEND_ASSERTS=os.path.realpath(os.path.join(WORK_DIR,"..","frontend","dist"))
 
 EXPIRE_SECONDS = 60*15
 DEFAULT_LIMIT = "1 per 3 second"

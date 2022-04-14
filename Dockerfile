@@ -23,7 +23,7 @@ RUN pip install -r requirements.txt -t $LIB_PATH -i https://mirrors.aliyun.com/p
 RUN chmod +x bootstrap
 
 # Build fronted
-COPY frontend $WORK_DIR/fronted
+COPY frontend $WORK_DIR/frontend
 WORKDIR $WORK_DIR/fronted
 RUN mkdir /usr/local/lib/nodejs
 RUN wget https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz
