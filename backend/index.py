@@ -206,7 +206,6 @@ def download_file(filepath):
     assert sign==hash
     date,filename=filepath.strip("/").split('/')
     directory=os.path.join(PATH_STORAGE, date)
-    print(directory,filename)
     return send_from_directory(directory,filename,as_attachment=True)
 
 app.register_blueprint(api_main, url_prefix="/tts")
