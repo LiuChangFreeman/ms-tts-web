@@ -94,11 +94,12 @@ def generate():
             rate = data["rate"]
             assert style in tts_styles
             assert type(rate) == int
-            assert len(text) <= 150
+            assert len(text) <= 180
             uid = str(uuid.uuid4())
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             result = loop.run_until_complete(tts_worker(text, rate, style, uid))
+            loop.close()
             if result:
                 filename_mp3 = "{}.mp3".format(uid)
 
@@ -171,6 +172,7 @@ def generate():
                     file_szie = stat_info.st_size
                     if file_szie > 0:
                         response["data"]["video"] = get_signed_url(filename_video)
+                        response["data"]["image"] = get_signed_url(filename_image)
             else:
                 response = {
                     "success": False,

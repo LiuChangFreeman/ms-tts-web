@@ -22,7 +22,7 @@ WORKDIR $WORK_DIR/backend
 RUN pip install -r requirements.txt -t $LIB_PATH -i https://mirrors.aliyun.com/pypi/simple/ --upgrade
 RUN chmod +x bootstrap
 
-# Build fronted
+# Build frontend
 COPY frontend $WORK_DIR/frontend
 WORKDIR $WORK_DIR/frontend
 RUN mkdir /usr/local/lib/nodejs

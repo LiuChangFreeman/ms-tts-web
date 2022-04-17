@@ -19,6 +19,6 @@ tts_styles = ["Default", "assistant", "chat", "customerservice", "newscast", "af
 
 MIN_VIDEO_HEIGHT = 720
 VIDEO_WIDTH = 1280
-FONT_SIZE = 60
+FONT_SIZE = 56
 FONT_WIDTH = FONT_SIZE + 8
 LINE_PADDING = FONT_WIDTH*3
