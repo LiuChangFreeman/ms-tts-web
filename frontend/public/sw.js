@@ -9,9 +9,9 @@ self.addEventListener('install', (e) => {
   );
 });
 
-function isInAllowedList(url) {
-  const allowedList = []
-  for (const item of allowedList) {
+function isInDissAllowedList(url) {
+  const dissAllowedList = ["/tts/generate"];
+  for (const item of dissAllowedList) {
     if (url.indexOf(item)!==-1) {
       return true
     }
@@ -24,7 +24,7 @@ self.addEventListener('fetch', function (event) {
     caches.match(event.request).then(function (result) {
       const request = event.request;
       const url = request.url;
-      if (isInAllowedList(url)) {
+      if (!isInDissAllowedList(url)) {
         return result || fetch(request).then(response => {
           return caches.open('tts').then(cache => {
             if(request.method==="GET"&&response.status===200) {
@@ -35,17 +35,7 @@ self.addEventListener('fetch', function (event) {
         });
       } else {
         return fetch(request).then(response => {
-          return caches.open('tts').then(cache => {
-            try{
-              if(request.method==="GET"&&response.status===200) {
-                cache.put(request, response.clone());
-              }
-            }
-            catch (e) {
-              console.log(e);
-            }
-            return response;
-          });
+          return response;
         }).catch(
           async () => {
             if (event.clientId) {

@@ -65,8 +65,8 @@ const TtsGenerator= (props) => {
   return (
     <div>
       <Stack horizontalAlign="center">
-        <Stack style={{width:"95vw"}}>
-          <Text variant="xLarge" style={{margin:5}}>
+        <Stack style={{width:"85vw",maxWidth:800,marginTop:10}}>
+          <Text variant="xLarge">
             配音生成
           </Text>
         </Stack>
@@ -75,7 +75,7 @@ const TtsGenerator= (props) => {
           style={{width:"85vw",maxWidth:800,fontSize:16}}
           label="请输入文本"
           multiline
-          maxLength={120}
+          maxLength={180}
           autoAdjustHeight
           defaultValue={text}
           onChange={(e,value)=>{
@@ -224,6 +224,7 @@ const TtsGenerator= (props) => {
                     play_url: taskResult.video
                   }
                 }}
+                cover={taskResult.image}
                 shouldObserveResize
                 initialObjectFit={"cover"}
                 locale={"zh-Hans"}
