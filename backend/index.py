@@ -11,7 +11,7 @@ from msspeech import MSSpeech
 
 app = Flask(__name__)
 app.secret_key=KEY_SECRET 
-app.debug=True
+app.debug=False
 api_main = Blueprint('main', __name__)
 api_static = Blueprint('static', __name__)
 
@@ -194,7 +194,9 @@ def index():
 @limiter.exempt
 @compress.compressed()
 def return_static_files(filename):
-    return send_from_directory(PATH_FRONTEND_ASSERTS,filename,as_attachment=True)
+    response=send_from_directory(PATH_FRONTEND_ASSERTS,filename,as_attachment=True)
+    response.headers["Cache-Control"]="public"
+    return response
 
 @app.route("/files/<path:filepath>")
 @limiter.exempt

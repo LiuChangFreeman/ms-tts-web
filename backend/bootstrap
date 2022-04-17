@@ -2,4 +2,5 @@
 export PATH=$PATH:$(pwd)/bin:$LIB_PATH/bin
 export PYTHONPATH=$PYTHONPATH:$(pwd):$LIB_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd):$LIB_PATH
-gunicorn -w2 -b$HOST:$PORT -t10 index:app --chdir $(pwd)
+#gunicorn -w2 -b$HOST:$PORT -t10 index:app --chdir $(pwd)
+python index.py
