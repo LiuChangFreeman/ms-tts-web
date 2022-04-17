@@ -2,9 +2,9 @@
 from constant import *
 import json
 import os
-from flask import Flask, request, Blueprint, session, render_template,send_from_directory
-from flask_session import Session
+from flask import Flask, request, Blueprint, session, send_from_directory
 from flask_limiter import Limiter
+from flask_compress import Compress
 from PIL import Image, ImageDraw, ImageFont
 from msspeech import MSSpeech
 
@@ -20,7 +20,8 @@ limiter = Limiter(
     key_func=lambda: request.remote_addr,
     default_limits=[DEFAULT_LIMIT]
 )
-
+compress = Compress()
+compress.init_app(app)
 
 @app.errorhandler(429)
 def ratelimit_handler(e):
@@ -189,6 +190,7 @@ def index():
 
 @api_static.route('/<path:filename>')
 @limiter.exempt
+@compress.compressed()
 def return_static_files(filename):
     return send_from_directory(PATH_FRONTEND_ASSERTS,filename,as_attachment=True)
 
