@@ -28,7 +28,7 @@ WORKDIR $WORK_DIR/frontend
 RUN mkdir /usr/local/lib/nodejs && \
     wget https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz && \
     tar -xJvf node-$NODE_VERSION-linux-x64.tar.xz -C /usr/local/lib/nodejs && \
-    rm node-$NODE_VERSION-linux-x64.tar.xz
+    rm -rf node-$NODE_VERSION-linux-x64.tar.xz
 RUN npm install yarn -g  && \
     yarn config set registry https://registry.npm.taobao.org  && \
     yarn && \
@@ -42,7 +42,7 @@ RUN wget $(echo ${GITHUB_HTTP_PORXY})https://github.com/LiuChangFreeman/ms-tts-w
 # Install ffmpeg
 RUN wget $(echo ${GITHUB_HTTP_PORXY})https://github.com/LiuChangFreeman/ms-tts-web/releases/download/asserts/ffmpeg.zip && \
     unzip ffmpeg.zip && \
-    rm ffmpeg.zip && \
+    rm -rf ffmpeg.zip && \
     mv ffmpeg /usr/local/bin/ && \
     chmod +x /usr/local/bin/ffmpeg
 

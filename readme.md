@@ -9,6 +9,9 @@ git clone $(echo ${GITHUB_HTTP_PORXY})https://github.com/LiuChangFreeman/ms-tts-
 cd ms-tts-web
 # 不设置GITHUB_HTTP_PORXY参数则不启用加速，适用于海外机器构建
 docker build --build-arg GITHUB_HTTP_PORXY=$GITHUB_HTTP_PORXY -t ms_tts_web . --rm --network=host
+# 或者使用已构建好的镜像  
+docker pull registry.cn-shanghai.aliyuncs.com/custom_runtime/ms-tts-web
+# 创建容器实例
 docker run --name my_edge_tts -d --net=host -v $YOUR_TEMP_FILES_DIR:/home/storage -e HOST=0.0.0.0 -e PORT=8080 ms_tts_web
 #访问 http://YOUR_IP:8080
 ```
