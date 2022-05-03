@@ -33,7 +33,8 @@ RUN npm install yarn -g  && \
     yarn config set registry https://registry.npm.taobao.org  && \
     yarn && \
     npm run build && \
-    rm -rf $WORK_DIR/frontend/node_modules
+    rm -rf $WORK_DIR/frontend/node_modules && \
+    rm -rf /usr/local/share/.cache/yarn
 
 # Install pinfang font
 RUN wget $(echo ${GITHUB_HTTP_PORXY})https://github.com/LiuChangFreeman/ms-tts-web/releases/download/asserts/pingfang.ttf && \
